@@ -1,0 +1,1036 @@
+$manrope: "Manrope", sans-serif;
+$igraSans: "Igra Sans";
+$geologica: "Geologica";
+$blue: #3a5385;
+$blackish: #333333;
+@mixin respond-to($size) {
+  @media (max-width: $size) {
+    @content;
+  }
+}
+
+@mixin circleSpan($bgColor) {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: $bgColor;
+}
+@mixin textHidden($count) {
+  display: -webkit-box;
+  -webkit-line-clamp: $count;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+body {
+  background: #f9f9f9;
+}
+
+header {
+  .header-bg {
+    background: #e7eaf2;
+    padding-block: 10px;
+    @include respond-to(640px) {
+      display: none;
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .top-left {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        select {
+          appearance: none;
+          padding-inline: 10px;
+        }
+        ul {
+          display: flex;
+          gap: 30px;
+          @include respond-to(1200px) {
+            display: none;
+          }
+          li {
+            font-family: $geologica;
+            color: $blackish;
+            font-size: 16px;
+            font-weight: 300;
+            &:hover {
+              color: $blue;
+            }
+          }
+        }
+        .icon-text {
+          gap: 0px;
+        }
+      }
+      .top-right {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+      .icon-text {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: 0.2s linear;
+
+        .icon {
+          color: $blue;
+          font-size: 18px;
+        }
+        .text {
+          color: $blue;
+          font-family: $manrope;
+          font-size: 14px;
+          font-weight: 500;
+        }
+      }
+      .mobile-menu-btn {
+        display: none;
+        @include respond-to(1200px) {
+          display: flex;
+        }
+      }
+    }
+  }
+  .header-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 15px 20px;
+    .bottom-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      width: 100%;
+      .logo {
+        max-width: 140px;
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }
+      .catalog-btn {
+        padding: 20px 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid #33333380;
+        border-radius: 100px;
+        color: $blackish;
+        &:hover {
+          background: #e7eaf2;
+        }
+        @include respond-to(640px) {
+          display: none;
+        }
+        .icon {
+          font-size: 24px;
+        }
+        .text {
+          font-size: 20px;
+          font-weight: 300;
+          font-family: $geologica;
+        }
+      }
+      form {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid #33333380;
+        padding-inline: 24px;
+        border-radius: 100px;
+        max-width: 450px;
+        width: 100%;
+        @include respond-to(1200px) {
+          display: none;
+        }
+        input {
+          padding-block: 20px;
+          width: 100%;
+          font-size: 16px;
+          font-family: $geologica;
+          font-weight: 400;
+          color: #333333;
+          &::placeholder {
+            opacity: 50%;
+          }
+        }
+        button {
+          color: $blackish;
+          font-weight: 900;
+          font-size: 20px;
+        }
+      }
+    }
+    .bottom-right {
+      display: flex;
+      gap: 10px;
+      @include respond-to(640px) {
+        display: none;
+      }
+      .icon-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        font-size: 20px;
+        font-weight: 900;
+        color: $blackish;
+        border: 1px solid #33333380;
+        position: relative;
+        transition: 0.2s linear;
+
+        &:hover {
+          color: #3a5385;
+          background: #e7eaf2;
+        }
+        .absolute-span {
+          position: absolute;
+          right: 0;
+          top: 0;
+          background: #3a5385;
+          color: #fff;
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          font-size: 12px;
+          font-weight: 700;
+          font-family: $geologica;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      .mobile-search-btn {
+        display: none;
+        @include respond-to(1200px) {
+          display: block;
+        }
+      }
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      @include respond-to(640px) {
+        display: block;
+        font-size: 28px;
+        font-weight: 900;
+        color: $blue;
+      }
+    }
+  }
+}
+main {
+  section {
+    margin-top: 20px;
+  }
+  .home-section {
+    display: flex;
+    align-items: end;
+    aspect-ratio: 2.2/1;
+    overflow: hidden;
+    border-radius: 30px;
+    position: relative;
+    background: linear-gradient(
+      180deg,
+      #ececf4 -0.7%,
+      #f3f3f9 30.01%,
+      #f4f3fb 59.72%,
+      #f0eff7 81.37%,
+      #ececf4 100%
+    );
+    @include respond-to(1200px) {
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          300.45deg,
+          #e6eaf2 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        @include respond-to(640px) {
+          content: none;
+        }
+      }
+    }
+    @include respond-to(640px) {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      aspect-ratio: auto;
+      background: transparent;
+    }
+    .home-left {
+      padding: 40px;
+      z-index: 1;
+      @include respond-to(1200px) {
+        padding: 30px;
+      }
+      @include respond-to(640px) {
+        padding: 0;
+        padding-top: 150px;
+      }
+      h2 {
+        font-size: 70px;
+        font-weight: 400;
+        line-height: 1;
+        color: $blackish;
+        font-family: $igraSans;
+        max-width: 654px;
+        @include respond-to(1200px) {
+          font-size: 55px;
+          max-width: 408px;
+        }
+        @include respond-to(640px) {
+          font-size: 35px;
+        }
+      }
+    }
+    .home-right {
+      right: 0;
+      top: 0;
+      position: absolute;
+      height: 100%;
+      @include respond-to(640px) {
+        position: static;
+      }
+      img {
+        height: 100%;
+        transform: rotate(180deg) scaleY(-1);
+        @include respond-to(640px) {
+          width: 100%;
+          border-radius: 30px;
+        }
+      }
+    }
+  }
+  .about-section {
+    padding: 40px;
+    background: $blue;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    @include respond-to(640px) {
+      gap: 60px;
+      padding: 30px;
+    }
+    .about-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .circle {
+        @include circleSpan(#fff);
+      }
+      h5 {
+        color: #fff;
+        font-size: 14px;
+        font-family: $geologica;
+        font-weight: 300;
+      }
+    }
+    .about-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      @include respond-to(1200px) {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .bottom-left {
+        h2 {
+          max-width: 356px;
+          font-family: $igraSans;
+          color: #fff;
+          font-size: 45px;
+          line-height: 1.26;
+          font-weight: 400;
+          @include respond-to(1200px) {
+            max-width: 100%;
+          }
+          @include respond-to(640px) {
+            font-size: 25px;
+          }
+        }
+      }
+      .bottom-right {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: space-between;
+        gap: 30px;
+        p {
+          color: #fff;
+          font-size: 16px;
+          font-weight: 300;
+          font-family: $geologica;
+          max-width: 381px;
+          @include respond-to(1200px) {
+            max-width: 587px;
+          }
+          @include respond-to(640px) {
+            font-size: 14px;
+          }
+        }
+        a {
+          padding: 15px 30px;
+          background: #fff;
+          border-radius: 100px;
+          color: $blue;
+          font-size: 16px;
+          font-weight: 300;
+          font-family: $geologica;
+          transition: 0.2s linear;
+          &:hover {
+            background: #e7eaf2;
+            color: #333333;
+          }
+        }
+      }
+    }
+  }
+  .info-section {
+    padding-block: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 30px;
+    @include respond-to(1200px) {
+      grid-template-columns: 1fr;
+    }
+    @include respond-to(640px) {
+      row-gap: 20px;
+      padding-block: 40px;
+    }
+    .info-left {
+      h2 {
+        max-width: 380px;
+        font-size: 45px;
+        font-weight: 400;
+        font-family: $igraSans;
+        line-height: 1.3;
+        @include respond-to(640px) {
+          font-size: 35px;
+          line-height: 1;
+          max-width: 300px;
+        }
+      }
+    }
+    .info-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      grid-auto-rows: 240px;
+      @include respond-to(640px) {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+      }
+      .card {
+        border: 1px solid #3f537b4d;
+        border-radius: 20px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: space-between;
+        color: $blue;
+        font-family: $geologica;
+        .icon {
+          font-size: 24px;
+        }
+        p {
+          font-size: 20px;
+          font-weight: 300;
+          line-height: 1.25;
+        }
+      }
+    }
+  }
+  hr {
+    border-color: #9da9c2;
+  }
+  .catalog-section {
+    padding-block: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    font-family: $geologica;
+    @include respond-to(1200px) {
+      padding-block: 40px;
+    }
+    .catalog-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .circle {
+        @include circleSpan($blackish);
+      }
+      h5 {
+        font-size: 14px;
+        font-weight: 300;
+        color: $blackish;
+      }
+    }
+    h2 {
+      font-family: $igraSans;
+      font-size: 45px;
+      font-weight: 400;
+      color: $blackish;
+      @include respond-to(640px) {
+        font-size: 35px;
+      }
+    }
+    .catalog-cards {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      scroll-snap-type: x mandatory;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      .card {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        border-radius: 20px;
+        width: calc((100% - 60px) / 4);
+        min-width: 335px;
+        position: relative;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+        @include respond-to(1200px) {
+          width: calc((100% - 40px) / 3);
+          min-width: 285px;
+        }
+        @include respond-to(640px) {
+          width: calc((100% - 20px) / 2);
+        }
+        .card-img {
+          width: 100%;
+          height: 180px;
+          @include respond-to(1200px) {
+            height: 160px;
+          }
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+        .card-content {
+          padding: 25px;
+          display: flex;
+          flex-direction: column;
+          gap: 38px;
+          height: 100%;
+          @include respond-to(1200px) {
+            gap: 48px;
+          }
+          @include respond-to(640px) {
+            gap: 56px;
+          }
+          .card-name {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            h3 {
+              font-size: 20px;
+              font-weight: 500;
+              color: $blackish;
+              @include textHidden(2);
+            }
+            p {
+              font-size: 14px;
+              font-weight: 300;
+              color: #969696;
+              @include textHidden(3);
+            }
+          }
+          .card-price {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+            justify-content: space-between;
+            @include respond-to(1200px) {
+              flex-direction: column;
+              align-items: start;
+            }
+            .price-left {
+              display: flex;
+              flex-direction: column;
+              align-items: start;
+              .del-price {
+                font-size: 14px;
+                font-weight: 300;
+                color: #969696;
+                position: relative;
+                &::after {
+                  content: "";
+                  position: absolute;
+                  width: 100%;
+                  height: 1px;
+                  background: #969696;
+                  right: 1px;
+                  top: 1px;
+                  transform-origin: right top;
+                  transform: rotate(-22deg);
+                }
+              }
+              .main-price {
+                font-size: 20px;
+                font-weight: 700;
+                color: $blackish;
+              }
+            }
+            button {
+              padding: 18px 30px;
+              background: $blue;
+              border-radius: 50px;
+              color: #fff;
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              transition: 0.2s linear;
+              &:hover {
+                background: rgba(80, 104, 151, 1);
+              }
+              @include respond-to(1200px) {
+                width: 100%;
+                justify-content: center;
+              }
+              .icon {
+                font-size: 20px;
+              }
+              .text {
+                font-size: 16px;
+                font-weight: 500;
+              }
+            }
+          }
+        }
+        .card-absolute {
+          position: absolute;
+          left: 20px;
+          top: 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          span {
+            font-size: 12px;
+            font-weight: 300;
+            padding: 4px 8px;
+            border-radius: 100px;
+          }
+          .green {
+            background: #4fb153;
+            color: #fff;
+          }
+          .yellow {
+            background: #ffed4e;
+            color: $blackish;
+          }
+        }
+      }
+    }
+  }
+  .news-section {
+    display: flex;
+    padding: 40px;
+    border-radius: 30px;
+    background: $blue;
+    gap: 120px;
+    font-family: $geologica;
+    color: #fff;
+    @include respond-to(1200px) {
+      flex-direction: column;
+      gap: 40px;
+    }
+    @include respond-to(640px) {
+      padding: 30px;
+    }
+    .news-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      @include respond-to(1200px) {
+        flex-direction: row;
+        align-items: end;
+      }
+      .news-top {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        max-width: 257px;
+        .news-head {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          .circle {
+            @include circleSpan(#fff);
+          }
+          h5 {
+            font-size: 14px;
+            font-weight: 300;
+          }
+        }
+        h2 {
+          font-size: 45px;
+          font-weight: 400;
+          font-family: $igraSans;
+          line-height: 1.3;
+          @include respond-to(640px) {
+            font-size: 35px;
+          }
+        }
+      }
+      .news-bottom {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        @include respond-to(640px) {
+          display: none;
+        }
+        button {
+          color: #fff;
+          border: 1px solid #fff;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          font-size: 24px;
+        }
+      }
+    }
+    .news-right {
+      display: flex;
+      gap: 20px;
+      overflow-x: scroll;
+      margin-right: -40px;
+      padding-right: 40px;
+      scroll-snap-type: x mandatory;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      @include respond-to(640px) {
+        margin-right: -30px;
+        padding-right: 30px;
+      }
+      .card {
+        width: calc((100% - 40px) / 2.6);
+        min-width: 350px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        background: #445c8b;
+        @include respond-to(640px) {
+          width: calc((100% - 20px) / 2);
+          min-width: 260px;
+        }
+        .card-img {
+          width: 100%;
+          height: 230px;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        .card-content {
+          padding: 25px;
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          justify-content: space-between;
+          gap: 70px;
+          height: 100%;
+          @include respond-to(640px) {
+            gap: 38px;
+            padding: 15px;
+          }
+          .content-top {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            span {
+              color: rgba(255, 255, 255, 60%);
+              font-size: 14px;
+              font-weight: 300;
+            }
+            h3 {
+              font-size: 20px;
+              font-weight: 700;
+              line-height: 1.2;
+              @include textHidden(2);
+              @include respond-to(640px) {
+                font-size: 16px;
+              }
+            }
+          }
+          a {
+            color: rgba(255, 255, 255, 60%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            font-weight: 300;
+            i {
+              transition: 0.2s linear;
+            }
+            &:hover {
+              i {
+                transform: translateX(5px);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+footer {
+  margin-block: 20px;
+  padding: 70px 50px;
+  background: #2b374e;
+  border-radius: 30px;
+  color: #fff;
+  font-family: $geologica;
+  display: grid;
+  grid-template-columns: 212px 1fr;
+  column-gap: 100px;
+  @include respond-to(1200px) {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  @include respond-to(640px) {
+    gap: 40px;
+    padding: 30px;
+  }
+  hr {
+    margin-block: 50px;
+    border-color: rgba(255, 255, 255, 20%);
+    @include respond-to(1200px) {
+      margin-block: 40px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .footer-left-top {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    align-items: start;
+    @include respond-to(1200px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    @include respond-to(640px) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+    }
+    .left-logo-div {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+      @include respond-to(1200px) {
+        gap: 20px;
+      }
+      @include respond-to(640px) {
+        align-items: center;
+      }
+      .logo {
+        max-width: 164px;
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }
+      p {
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 1.35;
+        @include respond-to(1200px) {
+          max-width: 204px;
+        }
+      }
+    }
+    button {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 16px;
+      background: #3d4a64;
+      border-radius: 100px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: $manrope;
+    }
+  }
+  .footer-right-top {
+    display: flex;
+    flex-direction: column;
+    .right-top-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px 40px;
+      @include respond-to(1200px) {
+        gap: 30px;
+      }
+      @include respond-to(640px) {
+        display: grid;
+        gap: 30px 20px;
+        grid-template-columns: 1fr 1fr;
+      }
+      a {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 1.2;
+        @include respond-to(640px) {
+          font-size: 14px;
+        }
+      }
+    }
+    .right-contact-div {
+      display: flex;
+      align-items: center;
+      gap: 80px;
+      font-family: $manrope;
+      flex-wrap: wrap;
+      @include respond-to(1200px) {
+        gap: 40px;
+      }
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        span {
+          font-size: 12px;
+          font-weight: 500;
+          opacity: 70%;
+        }
+        a {
+          font-size: 22px;
+          font-weight: 500;
+          @include respond-to(1200px) {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+  .footer-left-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    @include respond-to(1200px) {
+      order: 1;
+      gap: 10px;
+    }
+    .bottom-img {
+      max-width: 110px;
+      width: 100%;
+      @include respond-to(1200px) {
+        display: none;
+      }
+      img {
+        width: 100%;
+      }
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 50%);
+
+      a {
+        color: rgba(255, 255, 255, 50%);
+        transition: 0.2 linear;
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+  .footer-right-bottom {
+    display: flex;
+    align-items: end;
+    gap: 60px;
+    @include respond-to(1200px) {
+      flex-direction: column-reverse;
+      align-items: start;
+      gap: 30px;
+    }
+    .bottom-left {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 480px;
+      width: 100%;
+      p {
+        max-width: 294px;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 1.2;
+        @include respond-to(640px) {
+          max-width: 100%;
+        }
+      }
+      form {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        @include respond-to(640px) {
+          flex-direction: column;
+          align-items: start;
+        }
+        input {
+          padding: 16px 24px;
+          border-radius: 100px;
+          border: 1px solid #ffffff40;
+          width: 100%;
+          color: #fff;
+          font-size: 14px;
+          font-weight: 300;
+          &::placeholder {
+            color: rgba(255, 255, 255, 50%);
+          }
+        }
+        button {
+          padding: 16px 24px;
+          background: $blue;
+          border-radius: 50px;
+          color: #fff;
+          font-size: 16px;
+          font-weight: 300;
+          @include respond-to(640px) {
+            width: 100%;
+          }
+        }
+      }
+    }
+    .bottom-icons {
+      display: flex;
+      gap: 16px;
+      a {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+      }
+    }
+  }
+}
